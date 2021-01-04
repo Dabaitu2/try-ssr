@@ -1,0 +1,88 @@
+{
+  "name": "try-ssr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "authors": [
+    {
+      "email": "331555765@qq.com",
+      "name": "tomokokawase"
+    }
+  ],
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "ava": "^3.15.0",
+    "eslint": "^7.17.0",
+    "husky": "^4.3.6",
+    "lerna": "^3.22.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1"
+  },
+  "scripts": {
+    "test": "ava",
+    "coverage": "nyc ava"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": true,
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "always",
+    "parser": "typescript"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "eslint"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "ava": {
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "timeout": "20s",
+    "files": [
+      "packages/**/*.test.{ts,tsx}"
+    ]
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "packages/**/*.ts"
+    ],
+    "exclude": [
+      "packages/**/*.test.ts",
+      "**/__tests__/**/*.*",
+      "**/vendors/**/*.*"
+    ],
+    "check-coverage": false
+  }
+}

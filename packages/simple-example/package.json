@@ -1,0 +1,23 @@
+{
+  "name": "simple-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "> TODO: description",
+  "author": "zhanghaoyang <zhanghaoyang.tomoko@bytedance.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/simple-example.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://bnpm.byted.org/"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
